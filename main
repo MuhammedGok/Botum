@@ -1,0 +1,195 @@
+from ayarlar import ayarlar
+import discord
+from discord.ext import commands
+import os
+import random
+import requests
+from bot_mantik import *
+
+print(os.listdir('images'))
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='/', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user} olarak giriş yaptık')
+
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+
+@bot.command()
+async def merhaba(ctx):
+        await ctx.send("Selam, Ben Havali_CJ!")
+
+
+
+
+
+@bot.command()
+async def bb(ctx):
+        await ctx.send("by")
+     
+
+
+@bot.command()
+async def köylü(ctx):
+        await ctx.send("https://youtu.be/lb3BTl3TpJ0?si=BQlhvdJ9nCKlBzLE")
+
+
+
+
+@bot.command()   
+async def SA(ctx):
+        await ctx.send("AS")
+    
+@bot.command()
+async def Limon(ctx):
+        await ctx.send("o7")
+
+@bot.command()
+async def Elraenn(ctx):
+        await ctx.send("https://www.twitch.tv/elraenn")
+    
+
+@bot.command()
+async def Nemesis(ctx):
+        await ctx.send("https://www.twitch.tv/nemesistv")
+    
+@bot.command()
+async def Holmes(ctx):
+        await ctx.send("https://www.twitch.tv/holmes")
+
+@bot.command()
+async def Baboli(ctx):
+        await ctx.send("https://www.twitch.tv/baboli")
+
+
+@bot.command()
+async def RRaene(ctx):
+        await ctx.send("https://www.twitch.tv/rraenee")
+
+
+
+#dört işlem 
+
+@bot.command()
+async def toplama(ctx, sayi1: int, sayi2: int):
+    await ctx.send(sayi1+sayi2)
+
+@bot.command()
+async def çıkarma(ctx, sayi1: int, sayi2: int):
+    await ctx.send(sayi1-sayi2)
+
+
+@bot.command()
+async def çarpma(ctx, sayi1: int, sayi2: int):
+    await ctx.send(sayi1*sayi2)
+
+@bot.command()
+async def bölme(ctx, sayi1: int, sayi2: int):
+    await ctx.send(sayi1/sayi2)
+
+
+#üs 
+
+
+@bot.command()
+async def üs(ctx, sayi1: int, sayi2: int):
+    await ctx.send(sayi1**sayi2)
+
+
+
+#diğer şeyler
+
+
+
+async def on_message(message):
+    if message.author == istemci.user:
+        return
+@bot.command()
+async def smile(ctx):
+    await ctx.send(emoji_olusturucu())
+
+@bot.command()
+async def para(ctx):
+    await ctx.send(yazi_tura())
+
+@bot.command()
+async def şifre(ctx):
+    await ctx.send(sifre_olusturucu(10))
+
+
+
+
+
+
+
+
+
+
+
+#mem
+
+def get_duck_image_url():    
+    url = 'https://random-d.uk/api/random'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+
+@bot.command('duck')
+async def duck(ctx):
+    '''duck komutunu çağırdığımızda, program ordek_resmi_urlsi_al fonksiyonunu çağırır.'''
+    image_url = get_duck_image_url()
+    await ctx.send(image_url)
+    
+@bot.command()
+async def mem_mc(ctx):
+    resimler_listesi = os.listdir("images")
+    rastgele_resim = random.choice(resimler_listesi)
+    with open(f'images/{rastgele_resim}', 'rb') as f:
+        # Dönüştürülen Discord kütüphane dosyasını bu değişkende saklayalım!
+        picture = discord.File(f)
+   # Daha sonra bu dosyayı bir parametre olarak gönderebiliriz!
+    await ctx.send(file=picture)
+
+@bot.command()
+async def mem_gr(ctx):
+    resimler_listesi2 = os.listdir("images2")
+    rastgele_resim2 = random.choice(resimler_listesi2)
+    with open(f'images2/{rastgele_resim2}', 'rb') as f:
+        # Dönüştürülen Discord kütüphane dosyasını bu değişkende saklayalım!
+        picture = discord.File(f)
+   # Daha sonra bu dosyayı bir parametre olarak gönderebiliriz!
+    await ctx.send(file=picture)
+
+@bot.command()
+async def mem_gow(ctx):
+    resimler_listesi3 = os.listdir("images3")
+    rastgele_resim3 = random.choice(resimler_listesi3)
+    with open(f'images3/{rastgele_resim3}', 'rb') as f:
+        # Dönüştürülen Discord kütüphane dosyasını bu değişkende saklayalım!
+        picture = discord.File(f)
+   # Daha sonra bu dosyayı bir parametre olarak gönderebiliriz!
+    await ctx.send(file=picture)
+
+
+
+
+
+@bot.command()
+async def uzayli(ctx):
+    resimler_listesi = os.listdir("images")
+    rastgele_resim = random.choice(resimler_listesi)
+    with open(f'uzayli/{rastgele_resim}', 'rb') as f:
+        # Dönüştürülen Discord kütüphane dosyasını bu değişkende saklayalım!
+        picture = discord.File(f)
+   # Daha sonra bu dosyayı bir parametre olarak gönderebiliriz!
+    await ctx.send(file=picture)
+
+bot.run("Token")
