@@ -18,13 +18,15 @@ async def on_ready():
     print(f'{bot.user} olarak giriş yaptık')
 
 
-@bot.command()
-async def heh(ctx, count_heh = 5):
-    await ctx.send("he" * count_heh)
+
 
 @bot.command()
 async def merhaba(ctx):
-        await ctx.send("Selam, Ben Havali_CJ!")
+        await ctx.send('''
+                       Selam, Ben Havali_CJ!
+                       https://tenor.com/view/wow-gif-20129360
+
+                       ''')
 
 
 
